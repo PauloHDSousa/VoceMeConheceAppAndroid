@@ -1,0 +1,26 @@
+package com.paulohdsousa.vocemeconhece.database;
+
+public class ScriptsDB {
+    public  static String getCreateTablePergunta() {
+        StringBuilder sql = new StringBuilder();
+        sql.append("CREATE TABLE IF NOT EXISTS Pergunta ( ");
+        sql.append("IdPergunta	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, ");
+        sql.append("Pergunta TEXT NOT NULL )");
+        return sql.toString();
+    }
+
+    public  static String getCreateTableResposta() {
+        StringBuilder sql = new StringBuilder();
+        sql.append("CREATE TABLE IF NOT EXISTS Resposta ( ");
+        sql.append("IdResposta INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, " );
+        sql.append("IdPergunta INTEGER NOT NULL, ");
+        sql.append("Resposta TEXT NOT NULL, ");
+        sql.append("RespostaCorreta INTEGER NOT NULL, ");
+        sql.append("FOREIGN KEY(IdPergunta) REFERENCES  Pergunta(IdPergunta) )");
+
+        return sql.toString();
+    }
+
+}
+
+

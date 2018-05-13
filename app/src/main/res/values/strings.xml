@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Você Me Conhece?</string>
+    <string name="title_jogar">Jogar</string>
+    <string name="title_ranking">Ranking</string>
+    <string name="title_perguntas">Cadastrar Perguntas</string>
+</resources>

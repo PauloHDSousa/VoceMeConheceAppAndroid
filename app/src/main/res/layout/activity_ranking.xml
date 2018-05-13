@@ -5,7 +5,8 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".RankingActivity">
+
 
     <TextView
         android:id="@+id/textView2"
@@ -15,7 +16,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="119dp"
         android:layout_marginTop="182dp"
-        android:text="Jogar Main" />
+        android:text="Ranking" />
 
 
     <android.support.design.widget.BottomNavigationView
@@ -25,5 +26,6 @@
         android:layout_alignParentBottom="true"
         android:background="?android:attr/windowBackground"
         app:menu="@menu/navigation" />
+
 
 </RelativeLayout>

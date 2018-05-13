@@ -1,14 +1,14 @@
 package com.paulohdsousa.vocemeconhece;
 
-public class    MainActivity extends BaseActivity {
+public class RankingActivity extends BaseActivity {
 
     @Override
     int getContentViewId() {
-        return R.layout.activity_main;
+        return R.layout.activity_ranking;
     }
 
     @Override
     int getNavigationMenuItemId() {
-        return R.id.navigation_home;
+        return R.id.navigation_ranking;
     }
 }

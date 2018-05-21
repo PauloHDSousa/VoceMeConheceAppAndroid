@@ -7,16 +7,16 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/textView2"
+
+    <ImageButton
+        android:id="@+id/btnJogar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="119dp"
-        android:layout_marginTop="182dp"
-        android:text="Jogar Main" />
-
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginBottom="0dp"
+        android:layout_marginEnd="1dp"
+        app:srcCompat="@drawable/play" />
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/navigation"

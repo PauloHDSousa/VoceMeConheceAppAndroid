@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DatabaseHelper  extends SQLiteOpenHelper {
 
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
 
     public DatabaseHelper(Context context) {
         super(context, "vocemeconhece.db", null, DATABASE_VERSION);
@@ -16,6 +16,7 @@ public class DatabaseHelper  extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(ScriptsDB.getCreateTablePergunta());
         db.execSQL(ScriptsDB.getCreateTableResposta());
+        db.execSQL(ScriptsDB.getCreateTableRanking());
     }
 
     @Override

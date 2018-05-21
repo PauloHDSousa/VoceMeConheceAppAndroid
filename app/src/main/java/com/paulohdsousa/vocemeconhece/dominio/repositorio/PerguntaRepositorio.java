@@ -22,12 +22,12 @@ public class PerguntaRepositorio {
     }
 
 
-    public void Inserir(Pergunta pergunta){
+    public long Inserir(Pergunta pergunta){
 
         ContentValues cv = new ContentValues();
         cv.put("Pergunta", pergunta.Pergunta);
 
-        conexao.insertOrThrow("Pergunta", null, cv);
+        return conexao.insertOrThrow("Pergunta", null, cv);
     }
 
     public void Excluir(int idPergunta){

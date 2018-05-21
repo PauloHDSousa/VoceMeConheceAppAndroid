@@ -21,6 +21,18 @@ public class ScriptsDB {
         return sql.toString();
     }
 
+    public  static String getCreateTableRanking() {
+        StringBuilder sql = new StringBuilder();
+        sql.append("CREATE TABLE IF NOT EXISTS Ranking ( ");
+        sql.append("IdRanking INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, " );
+        sql.append("Jogador TEXT NOT NULL, ");
+        sql.append("QuantidadeAcertos INT NOT NULL, ");
+        sql.append("QuantidadeRespondida INT NOT NULL, ");
+        sql.append("PorcentagemAcertos INT NOT NULL");
+
+        return sql.toString();
+    }
+
 }
 
 

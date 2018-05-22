@@ -26,9 +26,9 @@ public class ScriptsDB {
         sql.append("CREATE TABLE IF NOT EXISTS Ranking ( ");
         sql.append("IdRanking INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, " );
         sql.append("Jogador TEXT NOT NULL, ");
-        sql.append("QuantidadeAcertos INT NOT NULL, ");
-        sql.append("QuantidadeRespondida INT NOT NULL, ");
-        sql.append("PorcentagemAcertos INT NOT NULL");
+        sql.append("QuantidadeAcertos INTEGER NOT NULL, ");
+        sql.append("QuantidadeRespondida INTEGER NOT NULL, ");
+        sql.append("PorcentagemAcertos INTEGER NOT NULL");
 
         return sql.toString();
     }

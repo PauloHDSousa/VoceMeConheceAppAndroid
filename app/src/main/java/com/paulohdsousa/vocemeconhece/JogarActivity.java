@@ -1,10 +1,13 @@
 package com.paulohdsousa.vocemeconhece;
 
+import android.content.DialogInterface;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -30,6 +33,7 @@ public class JogarActivity extends AppCompatActivity {
     RadioGroup rgAlternativas;
     PerguntaRepositorio perguntaRepositorio;
     RespostaRepositorio respostaRepositorio;
+    String nomeJogador;
 
     int perguntaAtual;
     int respostasCorretas = 0;
@@ -40,6 +44,23 @@ public class JogarActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_jogar);
+
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        final EditText input = new EditText(this);
+        builder.setView(input);
+        builder.setMessage("Preencha seu nome")
+                .setCancelable(false)
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        nomeJogador = input.getText().toString();
+
+                        Toast.makeText(JogarActivity.this, nomeJogador, Toast.LENGTH_SHORT).show();
+                    }
+                });
+        AlertDialog alert = builder.create();
+        alert.show();
+
 
         btnNext = (ImageButton) findViewById(R.id.btnNext);
         tvPergunta = (TextView) findViewById(R.id.tvPergunta);

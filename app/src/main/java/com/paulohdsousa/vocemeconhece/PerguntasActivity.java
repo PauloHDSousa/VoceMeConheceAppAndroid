@@ -46,7 +46,8 @@ public class PerguntasActivity extends BaseActivity {
     @Override
     public void onResume(){
         super.onResume();
-        dataSource.notifyDataSetChanged();
+        if(dataSource != null)
+            dataSource.notifyDataSetChanged();
     }
 
     @Override

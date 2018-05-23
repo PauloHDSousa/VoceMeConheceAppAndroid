@@ -44,10 +44,31 @@ public class PerguntasActivity extends BaseActivity {
     }
 
     @Override
-    public void onResume(){
+    public void onResume() {
         super.onResume();
-        if(dataSource != null)
-            dataSource.notifyDataSetChanged();
+
+
+            try {
+                databaseHelper = new DatabaseHelper(this);
+
+                conexao = databaseHelper.getWritableDatabase();
+
+                Toast.makeText(this, "Sucesso", Toast.LENGTH_SHORT).show();
+
+                PerguntaRepositorio perguntaRepositorio = new PerguntaRepositorio(conexao);
+
+                List<Pergunta> perguntas = perguntaRepositorio.Buscar();
+
+                if (!perguntas.isEmpty()){
+                    dataSource = new CustomArrayAdapter(this, perguntas);
+                    listView.setAdapter(dataSource);
+                }else{
+                    Toast.makeText(this, "Nenhum registro encontrado", Toast.LENGTH_SHORT).show();
+                }
+
+            } catch (SQLException e){
+                Toast.makeText(this, "Erro", Toast.LENGTH_SHORT).show();
+            }
     }
 
     @Override
@@ -64,29 +85,5 @@ public class PerguntasActivity extends BaseActivity {
                 PerguntasActivity.this.startActivity(myIntent);
             }
         });
-
-
-
-        try {
-            databaseHelper = new DatabaseHelper(this);
-
-            conexao = databaseHelper.getWritableDatabase();
-
-            Toast.makeText(this, "Sucesso", Toast.LENGTH_SHORT).show();
-
-            PerguntaRepositorio perguntaRepositorio = new PerguntaRepositorio(conexao);
-
-            List<Pergunta> perguntas = perguntaRepositorio.Buscar();
-
-            if (!perguntas.isEmpty()){
-                dataSource = new CustomArrayAdapter(this, perguntas);
-                listView.setAdapter(dataSource);
-            }else{
-                Toast.makeText(this, "Nenhum registro encontrado", Toast.LENGTH_SHORT).show();
-            }
-
-        } catch (SQLException e){
-            Toast.makeText(this, "Erro", Toast.LENGTH_SHORT).show();
-        }
     }
 }

@@ -84,13 +84,13 @@ public class CadastrarPerguntaActivity extends  BaseActivity {
                         respostaRepositorio.Inserir(r1);
 
                         Resposta r2 = new Resposta();
-                        r2.Resposta = edtAlternativa1.getText().toString();
+                        r2.Resposta = edtAlternativa2.getText().toString();
                         r2.IdPergunta = (int)idPergunta;
                         r2.RespostaCorreta = radioButtonID == R.id.rbalternativa2;
                         respostaRepositorio.Inserir(r2);
 
                         Resposta r3 = new Resposta();
-                        r3.Resposta = edtAlternativa1.getText().toString();
+                        r3.Resposta = edtAlternativa3.getText().toString();
                         r3.IdPergunta = (int)idPergunta;
                         r3.RespostaCorreta = radioButtonID == R.id.rbalternativa3;
                         respostaRepositorio.Inserir(r3);

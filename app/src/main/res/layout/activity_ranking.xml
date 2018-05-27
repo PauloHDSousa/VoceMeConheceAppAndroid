@@ -7,16 +7,30 @@
     android:layout_height="match_parent"
     tools:context=".RankingActivity">
 
-
-    <TextView
-        android:id="@+id/textView2"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="119dp"
-        android:layout_marginTop="182dp"
-        android:text="Ranking" />
+        android:orientation="horizontal" >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="130px"
+        android:text="Jogador" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="200px"
+        android:text="Acertos" />
+
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/listViewRanking"
+        android:layout_width="fill_parent"
+        android:layout_marginTop="50px"
+        android:layout_height="wrap_content" >
+    </ListView>
 
 
     <android.support.design.widget.BottomNavigationView

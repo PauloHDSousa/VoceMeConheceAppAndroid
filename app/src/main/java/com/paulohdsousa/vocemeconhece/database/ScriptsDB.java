@@ -28,7 +28,7 @@ public class ScriptsDB {
         sql.append("Jogador TEXT NOT NULL, ");
         sql.append("QuantidadeAcertos INTEGER NOT NULL, ");
         sql.append("QuantidadeRespondida INTEGER NOT NULL, ");
-        sql.append("PorcentagemAcertos INTEGER NOT NULL");
+        sql.append("PorcentagemAcertos INTEGER NOT NULL )");
 
         return sql.toString();
     }

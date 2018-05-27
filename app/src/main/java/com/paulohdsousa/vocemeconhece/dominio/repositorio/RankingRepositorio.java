@@ -37,10 +37,10 @@ public class RankingRepositorio  {
         conexao.delete("Resposta", "idPergunta = ?",parametros);
     }
 
-    public List<Resposta> Buscar(){
-        List<Resposta> respostas = new ArrayList<Resposta>();
+    public List<Ranking> Buscar(){
+        List<Ranking> respostas = new ArrayList<Ranking>();
 
-        String sql =  "SELECT Resposta,RespostaCorreta FROM Resposta";
+        String sql =  "SELECT Jogador, QuantidadeAcertos, QuantidadeRespondida, PorcentagemAcertos FROM Ranking";
 
         Cursor resultado =  conexao.rawQuery(sql,null);
 
@@ -50,10 +50,11 @@ public class RankingRepositorio  {
         resultado.moveToFirst();
 
         do{
-            Resposta r = new Resposta();
-            r.IdResposta =  resultado.getInt(resultado.getColumnIndexOrThrow("IdPergunta"));
-            r.Resposta =    resultado.getString(resultado.getColumnIndexOrThrow("Pergunta"));
-            r.RespostaCorreta =    resultado.getInt(resultado.getColumnIndexOrThrow("Pergunta")) == 1 ? true : false ;
+            Ranking r = new Ranking();
+            r.Jogador =  resultado.getString(resultado.getColumnIndexOrThrow("Jogador"));
+            r.QuantidadeRespondida =    resultado.getInt(resultado.getColumnIndexOrThrow("QuantidadeRespondida"));
+            r.QuantidadeAcertos =    resultado.getInt(resultado.getColumnIndexOrThrow("QuantidadeAcertos"));
+            r.PorcentagemAcertos =    resultado.getInt(resultado.getColumnIndexOrThrow("PorcentagemAcertos"));
             respostas.add(r);
 
         } while(resultado.moveToNext());

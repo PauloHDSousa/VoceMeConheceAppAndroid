@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_margin="10dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/imgTrophy"
+        android:layout_width="110px"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/gold" />
+
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="110px"
+        android:id="@+id/tvPosicao"
+        android:textSize="64px"
+        android:layout_marginLeft="10px"
+        android:visibility="gone" />
+
+
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="280px"
+        android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large"
+        android:id="@+id/tvJogador"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp" />
+
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large"
+        android:id="@+id/tvAcertos"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp" />
+
+</LinearLayout>

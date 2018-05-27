@@ -1,22 +1,29 @@
 package com.paulohdsousa.vocemeconhece;
 
+import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.paulohdsousa.vocemeconhece.database.DatabaseHelper;
 import com.paulohdsousa.vocemeconhece.dominio.entidades.Pergunta;
+import com.paulohdsousa.vocemeconhece.dominio.entidades.Ranking;
 import com.paulohdsousa.vocemeconhece.dominio.entidades.Resposta;
 import com.paulohdsousa.vocemeconhece.dominio.repositorio.PerguntaRepositorio;
+import com.paulohdsousa.vocemeconhece.dominio.repositorio.RankingRepositorio;
 import com.paulohdsousa.vocemeconhece.dominio.repositorio.RespostaRepositorio;
 
 import java.util.List;
@@ -33,6 +40,7 @@ public class JogarActivity extends AppCompatActivity {
     RadioGroup rgAlternativas;
     PerguntaRepositorio perguntaRepositorio;
     RespostaRepositorio respostaRepositorio;
+    RankingRepositorio rankingRepositorio;
     String nomeJogador;
 
     int perguntaAtual;
@@ -77,8 +85,9 @@ public class JogarActivity extends AppCompatActivity {
             Toast.makeText(this, "Sucesso", Toast.LENGTH_SHORT).show();
 
             perguntaRepositorio = new PerguntaRepositorio(conexao);
-
+            rankingRepositorio  = new RankingRepositorio(conexao);
             respostaRepositorio = new RespostaRepositorio(conexao);
+
 
             perguntas = perguntaRepositorio.Buscar();
             Pergunta p = perguntas.get(perguntaAtual);
@@ -121,9 +130,16 @@ public class JogarActivity extends AppCompatActivity {
 
                 perguntaAtual++;
                 rgAlternativas.clearCheck();
-                if(perguntaAtual == perguntas.size()){
+                if(perguntaAtual ==  perguntas.size()){
                     Toast.makeText(JogarActivity.this, "Você acertou " + respostasCorretas + " perguntas", Toast.LENGTH_SHORT).show();
+                    Ranking r = new Ranking();
+                    r.Jogador = nomeJogador;
+                    r.QuantidadeAcertos = respostasCorretas;
+                    r.QuantidadeRespondida = perguntas.size();
+                    r.PorcentagemAcertos  =  (int)((respostasCorretas * 100.0f) / perguntas.size());
+                    rankingRepositorio.Inserir(r);
 
+                    alert_Sucesso();
                     return;
                 }
 
@@ -140,5 +156,25 @@ public class JogarActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    public void alert_Sucesso() {
+        final Dialog dialog = new Dialog(JogarActivity.this);
+        dialog.setContentView(R.layout.activity_sucesso);
+        dialog.setTitle("Ranking");
+
+        TextView text = (TextView) dialog.findViewById(R.id.tvSucesso);
+        text.setText("Você acertou " + respostasCorretas + " de " + perguntas.size());
+
+        Button dialogButton = (Button) dialog.findViewById(R.id.btnOk);
+        // if button is clicked, close the custom dialog
+        dialogButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+                finish();
+            }
+        });
+        dialog.show();
     }
 }

@@ -51,7 +51,7 @@ public class CadastrarPerguntaActivity extends  BaseActivity {
         edtPergunta = (EditText) findViewById(R.id.edtPergunta);
         edtAlternativa1 = (EditText) findViewById(R.id.edtAlternativa1);
         edtAlternativa2 = (EditText) findViewById(R.id.edtAlternativa2);
-        edtAlternativa2 = (EditText) findViewById(R.id.edtAlternativa3);
+        edtAlternativa3 = (EditText) findViewById(R.id.edtAlternativa3);
         rgAlternativas = (RadioGroup) findViewById(R.id.rgAlternativas);
 
 

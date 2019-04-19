@@ -5,6 +5,7 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginLeft="20px"
     tools:context=".JogarActivity">
 
 
@@ -68,8 +69,7 @@
         android:layout_below="@+id/tvAlternativaTexto"
         android:layout_marginTop="20px"
         android:gravity="center_horizontal"
-        android:id="@+id/rgAlternativas"
-        android:checkedButton="@+id/sound" >
+        android:id="@+id/rgAlternativas" >
 
         <RadioButton
             android:id="@+id/rbalternativa1"

@@ -53,8 +53,6 @@ public class PerguntasActivity extends BaseActivity {
 
                 conexao = databaseHelper.getWritableDatabase();
 
-                Toast.makeText(this, "Sucesso", Toast.LENGTH_SHORT).show();
-
                 PerguntaRepositorio perguntaRepositorio = new PerguntaRepositorio(conexao);
 
                 List<Pergunta> perguntas = perguntaRepositorio.Buscar();
@@ -63,7 +61,7 @@ public class PerguntasActivity extends BaseActivity {
                     dataSource = new CustomArrayAdapter(this, perguntas);
                     listView.setAdapter(dataSource);
                 }else{
-                    Toast.makeText(this, "Nenhum registro encontrado", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "Nenhum pergunta cadastrada", Toast.LENGTH_LONG).show();
                 }
 
             } catch (SQLException e){
@@ -80,7 +78,6 @@ public class PerguntasActivity extends BaseActivity {
 
         btnAdd.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Toast.makeText ( PerguntasActivity.this,"Clicou", Toast.LENGTH_SHORT).show();
                 Intent myIntent = new Intent(PerguntasActivity.this, CadastrarPerguntaActivity.class);
                 PerguntasActivity.this.startActivity(myIntent);
             }

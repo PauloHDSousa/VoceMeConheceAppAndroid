@@ -40,7 +40,7 @@ public class RankingRepositorio  {
     public List<Ranking> Buscar(){
         List<Ranking> respostas = new ArrayList<Ranking>();
 
-        String sql =  "SELECT Jogador, QuantidadeAcertos, QuantidadeRespondida, PorcentagemAcertos FROM Ranking";
+        String sql =  "SELECT Jogador, QuantidadeAcertos, QuantidadeRespondida, PorcentagemAcertos FROM Ranking ORDER BY PorcentagemAcertos DESC";
 
         Cursor resultado =  conexao.rawQuery(sql,null);
 

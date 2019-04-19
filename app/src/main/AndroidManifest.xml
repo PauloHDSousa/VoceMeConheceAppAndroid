@@ -4,10 +4,8 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/appicon"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
-        android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
             android:name=".MainActivity"
@@ -18,11 +16,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".RankingActivity" android:label="Ranking"/>
-        <activity android:name=".CadastrarPerguntaActivity" android:label="Cadastrar Perguntas" />
+        <activity android:name=".CadastrarPerguntaActivity" android:label="Cadastrar Pergunta" />
         <activity android:name=".JogarActivity" android:label="Jogar" />
         <activity android:name=".SucessoActivity" android:label="Sucesso" />
         <activity android:name=".PerguntasActivity" android:label="Perguntas">
-
         </activity>
     </application>
 

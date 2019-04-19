@@ -64,14 +64,16 @@ public class CustomArrayAdapter extends ArrayAdapter<Pergunta> {
 
                     remove(finalPosition);
                     notifyDataSetChanged();
+
+                    Toast.makeText(rowView.getContext(), "Pergunta removida", Toast.LENGTH_SHORT).show();
+
+
                 } catch (SQLException e){
                     Toast.makeText(rowView.getContext(), "Erro" + e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
                     finally {
                     conexao.close();
                 }
-
-                Toast.makeText(rowView.getContext(), perguntas.get(finalPosition).Pergunta + " " +perguntas.get(finalPosition).IdPergunta ,Toast.LENGTH_LONG).show();
             }
         });
 

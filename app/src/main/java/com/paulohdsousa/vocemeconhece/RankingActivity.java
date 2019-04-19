@@ -53,8 +53,6 @@ public class RankingActivity extends BaseActivity {
 
             conexao = databaseHelper.getWritableDatabase();
 
-            Toast.makeText(this, "Sucesso", Toast.LENGTH_SHORT).show();
-
             RankingRepositorio rankingRepositorio = new RankingRepositorio(conexao);
 
             List<Ranking> ranking = rankingRepositorio.Buscar();
@@ -63,7 +61,7 @@ public class RankingActivity extends BaseActivity {
                 dataSource = new CustomRankingArrayAdapter(this, ranking);
                 listView.setAdapter(dataSource);
             } else {
-                Toast.makeText(this, "Nenhum registro encontrado", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Nenhum jogo registrado", Toast.LENGTH_LONG).show();
             }
 
         } catch (SQLException e) {

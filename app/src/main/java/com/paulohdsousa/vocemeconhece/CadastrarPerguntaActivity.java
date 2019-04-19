@@ -66,10 +66,16 @@ public class CadastrarPerguntaActivity extends  BaseActivity {
                     perguntaRepositorio = new PerguntaRepositorio(conexao);
                     respostaRepositorio = new RespostaRepositorio(conexao);
 
+
+                    String textoPergunta = edtPergunta.getText().toString();
+
                     Pergunta pergunta = new Pergunta();
-                    pergunta.Pergunta = edtPergunta.getText().toString();
+                    pergunta.Pergunta = textoPergunta ;
 
-
+                    if(textoPergunta.isEmpty()){
+                        Toast.makeText(CadastrarPerguntaActivity.this, "Digite um texto para sua pergunta", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
 
                     long idPergunta = perguntaRepositorio.Inserir(pergunta);
 
@@ -77,27 +83,34 @@ public class CadastrarPerguntaActivity extends  BaseActivity {
 
                         int radioButtonID = rgAlternativas.getCheckedRadioButtonId();
 
+                        String tAlternativa1 = edtAlternativa1.getText().toString();
+                        String tAlternativa2 = edtAlternativa2.getText().toString();
+                        String tAlternativa3 = edtAlternativa3.getText().toString();
+
+                        if(tAlternativa1.isEmpty() || tAlternativa2.isEmpty() || tAlternativa3.isEmpty() || radioButtonID == -1){
+                            Toast.makeText(CadastrarPerguntaActivity.this, "Preencha todas as alternativas e escolha uma correta antes de continuar", Toast.LENGTH_LONG).show();
+                            return;
+                        }
+
                         Resposta r1 = new Resposta();
-                        r1.Resposta = edtAlternativa1.getText().toString();
+                        r1.Resposta = tAlternativa1;
                         r1.IdPergunta = (int)idPergunta;
                         r1.RespostaCorreta = radioButtonID == R.id.rbalternativa1;
                         respostaRepositorio.Inserir(r1);
 
                         Resposta r2 = new Resposta();
-                        r2.Resposta = edtAlternativa2.getText().toString();
+                        r2.Resposta = tAlternativa2;
                         r2.IdPergunta = (int)idPergunta;
                         r2.RespostaCorreta = radioButtonID == R.id.rbalternativa2;
                         respostaRepositorio.Inserir(r2);
 
                         Resposta r3 = new Resposta();
-                        r3.Resposta = edtAlternativa3.getText().toString();
+                        r3.Resposta = tAlternativa3;
                         r3.IdPergunta = (int)idPergunta;
                         r3.RespostaCorreta = radioButtonID == R.id.rbalternativa3;
                         respostaRepositorio.Inserir(r3);
 
-
-
-                        Toast.makeText(CadastrarPerguntaActivity.this, "Perguntas cadastradas com sucesso", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(CadastrarPerguntaActivity.this, "Pergunta cadastrada com sucesso", Toast.LENGTH_SHORT).show();
                         finish();
                     }else{
                         Toast.makeText(CadastrarPerguntaActivity.this, "Erro ao inserir pergunta", Toast.LENGTH_SHORT).show();

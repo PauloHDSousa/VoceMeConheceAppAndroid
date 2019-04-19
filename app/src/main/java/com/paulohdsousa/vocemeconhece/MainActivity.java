@@ -18,6 +18,8 @@ public class    MainActivity extends BaseActivity {
     DatabaseHelper databaseHelper;
     PerguntaRepositorio perguntaRepositorio;
     ImageButton btnJogar;
+    ImageButton btnSobre;
+
     int qtdPerguntasMinimas = 5;
     @Override
     int getContentViewId() {
@@ -44,7 +46,7 @@ public class    MainActivity extends BaseActivity {
 
                     AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
                     alertDialog.setTitle("Aviso");
-                    alertDialog.setMessage("Você precisa cadastrar no mínimo " + qtdPerguntasMinimas + "perguntas");
+                    alertDialog.setMessage("Você precisa cadastrar no mínimo " + qtdPerguntasMinimas + " perguntas");
                     alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
                             new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int which) {

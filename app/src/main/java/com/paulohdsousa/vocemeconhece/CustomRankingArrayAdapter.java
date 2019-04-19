@@ -45,6 +45,10 @@ public class CustomRankingArrayAdapter extends ArrayAdapter<Ranking> {
         TextView tvAcertos = (TextView) rowView.findViewById(R.id.tvAcertos);
         TextView tvPosicao = (TextView) rowView.findViewById(R.id.tvPosicao);
 
+        TextView tvPerguntas = (TextView) rowView.findViewById(R.id.tvPerguntas);
+        TextView tvPorcentagemAcertos = (TextView) rowView.findViewById(R.id.tvPorcentagemAcertos);
+
+
         ImageView imageView = (ImageView) rowView.findViewById(R.id.imgTrophy);
         position = position;
 
@@ -64,8 +68,8 @@ public class CustomRankingArrayAdapter extends ArrayAdapter<Ranking> {
 
         tvJogador.setText(r .Jogador);
         tvAcertos.setText(String.valueOf(r .QuantidadeAcertos));
-        //tvPerguntas.setText(String.valueOf(r .QuantidadeRespondida));
-        //tvPorcentagemAcertos.setText(String.valueOf(r .PorcentagemAcertos));
+        tvPerguntas.setText(String.valueOf(r .QuantidadeRespondida));
+        tvPorcentagemAcertos.setText(String.valueOf(r .PorcentagemAcertos));
 
         return rowView;
     }

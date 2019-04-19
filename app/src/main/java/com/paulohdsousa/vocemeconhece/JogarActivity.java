@@ -82,24 +82,18 @@ public class JogarActivity extends AppCompatActivity {
 
             conexao = databaseHelper.getWritableDatabase();
 
-            Toast.makeText(this, "Sucesso", Toast.LENGTH_SHORT).show();
-
             perguntaRepositorio = new PerguntaRepositorio(conexao);
             rankingRepositorio  = new RankingRepositorio(conexao);
             respostaRepositorio = new RespostaRepositorio(conexao);
 
-
             perguntas = perguntaRepositorio.Buscar();
             Pergunta p = perguntas.get(perguntaAtual);
-
-
-
 
             if (!perguntas.isEmpty()){
                 tvPergunta.setText(p.Pergunta);
                 List<Resposta> respostas = respostaRepositorio.Buscar(p.IdPergunta);
-                tvAlternativa1.setText(respostas.get(0).Resposta);
 
+                tvAlternativa1.setText(respostas.get(0).Resposta);
                 tvAlternativa2.setText(respostas.get(1).Resposta);
                 tvAlternativa3.setText(respostas.get(2).Resposta);
 
@@ -124,6 +118,13 @@ public class JogarActivity extends AppCompatActivity {
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                int i = rgAlternativas.getCheckedRadioButtonId();
+
+                if(i == -1){
+                    Toast.makeText(JogarActivity.this, "Escolha uma alternativa", Toast.LENGTH_SHORT).show();
+                    return;
+                }
 
                if (respostaCorreta == rgAlternativas.getCheckedRadioButtonId())
                    respostasCorretas++;
@@ -153,6 +154,15 @@ public class JogarActivity extends AppCompatActivity {
                     tvAlternativa1.setText(respostas.get(0).Resposta);
                     tvAlternativa2.setText(respostas.get(1).Resposta);
                     tvAlternativa3.setText(respostas.get(2).Resposta);
+
+                    if(respostas.get(0).RespostaCorreta)
+                        respostaCorreta = R.id.rbalternativa1;
+
+                    if(respostas.get(1).RespostaCorreta)
+                        respostaCorreta = R.id.rbalternativa2;
+
+                    if(respostas.get(2).RespostaCorreta)
+                        respostaCorreta = R.id.rbalternativa3;
                 }
             }
         });

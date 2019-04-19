@@ -76,8 +76,7 @@ tools:context=".CadastrarPerguntaActivity">
         android:layout_below="@+id/tvAlternativaTexto"
         android:layout_marginTop="20px"
         android:gravity="center_horizontal"
-        android:id="@+id/rgAlternativas"
-        android:checkedButton="@+id/sound" >
+        android:id="@+id/rgAlternativas" >
 
         <RadioButton
             android:id="@+id/rbalternativa1"

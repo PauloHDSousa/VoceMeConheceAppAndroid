@@ -28,15 +28,20 @@
         android:layout_width="280px"
         android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large"
         android:id="@+id/tvJogador"
+        android:fontFamily="sans-serif-light"
+        android:textColor="@color/whiteBlue"
         android:layout_marginTop="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp" />
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="10dp"/>
 
     <TextView
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large"
         android:id="@+id/tvAcertos"
+        android:fontFamily="sans-serif-light"
+        android:textColor="@color/whiteBlue"
         android:layout_marginTop="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp" />
@@ -46,6 +51,8 @@
         android:layout_width="wrap_content"
         android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large"
         android:id="@+id/tvPerguntas"
+        android:fontFamily="sans-serif-light"
+        android:textColor="@color/whiteBlue"
         android:layout_marginTop="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp" />
@@ -55,6 +62,8 @@
         android:layout_width="wrap_content"
         android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large"
         android:id="@+id/tvPorcentagemAcertos"
+        android:fontFamily="sans-serif-light"
+        android:textColor="@color/whiteBlue"
         android:layout_marginTop="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp" />

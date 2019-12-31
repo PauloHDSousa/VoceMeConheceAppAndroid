@@ -1,26 +1,17 @@
 package com.paulohdsousa.vocemeconhece;
 
 import android.app.Dialog;
-import android.content.DialogInterface;
-import android.content.Intent;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.paulohdsousa.vocemeconhece.database.DatabaseHelper;
-import com.paulohdsousa.vocemeconhece.dominio.entidades.Pergunta;
 import com.paulohdsousa.vocemeconhece.dominio.entidades.Ranking;
-import com.paulohdsousa.vocemeconhece.dominio.entidades.Resposta;
-import com.paulohdsousa.vocemeconhece.dominio.repositorio.PerguntaRepositorio;
 import com.paulohdsousa.vocemeconhece.dominio.repositorio.RankingRepositorio;
-import com.paulohdsousa.vocemeconhece.dominio.repositorio.RespostaRepositorio;
 
 import java.util.List;
 
@@ -32,6 +23,7 @@ public class RankingActivity extends BaseActivity {
     SQLiteDatabase conexao;
     DatabaseHelper databaseHelper;
     CustomRankingArrayAdapter dataSource;
+
 
     @Override
     int getContentViewId() {
@@ -67,6 +59,9 @@ public class RankingActivity extends BaseActivity {
         } catch (SQLException e) {
             Toast.makeText(this, "Erro", Toast.LENGTH_SHORT).show();
         }
+        finally {
+            conexao.close();
+        }
     }
 
     @Override
@@ -74,6 +69,28 @@ public class RankingActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
 
         listView = (ListView) findViewById(R.id.listViewRanking);
+        ImageButton imgButton = (ImageButton) findViewById(R.id.btnQuestion);
+        imgButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                alertHowItWorks();
+            }
+        });
+    }
 
+    public void alertHowItWorks() {
+        final Dialog dialog = new Dialog(RankingActivity.this);
+        dialog.setContentView(R.layout.activity_como_funciona_ranking);
+        dialog.setTitle("Como funciona o Ranking");
+
+
+       ImageButton dialogButton = (ImageButton) dialog.findViewById(R.id.btnOk);
+        // if button is clicked, close the custom dialog
+        dialogButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+        dialog.show();
     }
 }

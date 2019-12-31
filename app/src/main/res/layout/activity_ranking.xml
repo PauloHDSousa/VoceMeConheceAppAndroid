@@ -5,41 +5,55 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/gradient"
     tools:context=".RankingActivity">
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal" >
 
-    <TextView
+    <LinearLayout
+        android:id="@+id/llMenu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="130px"
-        android:text="Jogador" />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="100px"
-        android:text="Acertos/ Perguntas / % Acerto" />
+        android:layout_marginLeft="10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:fontFamily="sans-serif-light"
+            android:gravity="center"
+            android:text="Ranking dos melhores jogadores"
+            android:textColor="@color/whiteBlue"
+            android:textSize="35dp"
+            android:textStyle="italic" />
+
+
+        <ImageButton
+            android:id="@+id/btnQuestion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@android:color/transparent"
+            android:gravity="right"
+            android:src="@drawable/sobre_ranking" />
+
+        <ListView
+            android:id="@+id/listViewRanking"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="55dp"
+            android:layout_marginTop="10dp"></ListView>
+
 
     </LinearLayout>
-
-    <ListView
-        android:id="@+id/listViewRanking"
-        android:layout_width="fill_parent"
-        android:layout_marginTop="50px"
-        android:layout_height="wrap_content" >
-    </ListView>
-
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="?android:attr/windowBackground"
+        android:background="@android:color/transparent"
         app:menu="@menu/navigation" />
-
-
 </RelativeLayout>

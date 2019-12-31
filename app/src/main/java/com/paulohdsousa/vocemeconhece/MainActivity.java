@@ -3,6 +3,7 @@ package com.paulohdsousa.vocemeconhece;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.view.View;
@@ -17,7 +18,7 @@ public class    MainActivity extends BaseActivity {
     SQLiteDatabase conexao;
     DatabaseHelper databaseHelper;
     PerguntaRepositorio perguntaRepositorio;
-    ImageButton btnJogar;
+    ImageButton btnJogar, btnRate, btnEmail;
     ImageButton btnSobre;
 
     int qtdPerguntasMinimas = 5;
@@ -38,6 +39,30 @@ public class    MainActivity extends BaseActivity {
         databaseHelper = new DatabaseHelper(MainActivity.this);
         conexao = databaseHelper.getWritableDatabase();
         perguntaRepositorio = new PerguntaRepositorio(conexao);
+        btnRate = (ImageButton)findViewById(R.id.btnRate);
+        btnEmail = (ImageButton)findViewById(R.id.btnEmail);
+
+        btnRate.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                String str ="https://play.google.com/store/apps/details?id=com.paulohdsousa.vocemeconhece";
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(str)));
+            }
+        });
+
+        btnEmail.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                final Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);
+
+                /* Fill it with Data */
+                emailIntent.setType("plain/text");
+                emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{"paulo.ti.sousa@gmail.com"});
+                emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Você me conhece? - Críticas, Dúvidas, Elogios e Sugestões");
+                emailIntent.putExtra(android.content.Intent.EXTRA_TEXT, "Gostariz de dizer que ");
+
+                /* Send it off to the Activity-Chooser */
+                MainActivity.this.startActivity(Intent.createChooser(emailIntent, "Enviar email"));
+            }
+        });
 
         btnJogar.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {

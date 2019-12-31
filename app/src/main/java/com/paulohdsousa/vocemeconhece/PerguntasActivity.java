@@ -47,7 +47,6 @@ public class PerguntasActivity extends BaseActivity {
     public void onResume() {
         super.onResume();
 
-
             try {
                 databaseHelper = new DatabaseHelper(this);
 
@@ -66,6 +65,9 @@ public class PerguntasActivity extends BaseActivity {
 
             } catch (SQLException e){
                 Toast.makeText(this, "Erro", Toast.LENGTH_SHORT).show();
+            }
+            finally {
+                conexao.close();
             }
     }
 

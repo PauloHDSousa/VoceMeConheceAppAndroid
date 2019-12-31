@@ -62,8 +62,6 @@ public class JogarActivity extends AppCompatActivity {
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         nomeJogador = input.getText().toString();
-
-                        Toast.makeText(JogarActivity.this, nomeJogador, Toast.LENGTH_SHORT).show();
                     }
                 });
         AlertDialog alert = builder.create();
@@ -93,9 +91,9 @@ public class JogarActivity extends AppCompatActivity {
                 tvPergunta.setText(p.Pergunta);
                 List<Resposta> respostas = respostaRepositorio.Buscar(p.IdPergunta);
 
-                tvAlternativa1.setText(respostas.get(0).Resposta);
-                tvAlternativa2.setText(respostas.get(1).Resposta);
-                tvAlternativa3.setText(respostas.get(2).Resposta);
+                tvAlternativa1.setText("1 - " + respostas.get(0).Resposta);
+                tvAlternativa2.setText("2 - " +respostas.get(1).Resposta);
+                tvAlternativa3.setText("3 - " +respostas.get(2).Resposta);
 
                 if(respostas.get(0).RespostaCorreta)
                     respostaCorreta = R.id.rbalternativa1;
@@ -148,6 +146,12 @@ public class JogarActivity extends AppCompatActivity {
 
                 List<Resposta> respostas = respostaRepositorio.Buscar(p.IdPergunta);
 
+                if(respostas.isEmpty()){
+                    perguntaAtual ++;
+                    p = perguntas.get(perguntaAtual);
+
+                    respostas = respostaRepositorio.Buscar(p.IdPergunta);
+                }
 
                 if (!perguntas.isEmpty()) {
                     tvPergunta.setText(p.Pergunta);
@@ -176,7 +180,7 @@ public class JogarActivity extends AppCompatActivity {
         TextView text = (TextView) dialog.findViewById(R.id.tvSucesso);
         text.setText("Você acertou " + respostasCorretas + " de " + perguntas.size());
 
-        Button dialogButton = (Button) dialog.findViewById(R.id.btnOk);
+        ImageButton dialogButton = (ImageButton) dialog.findViewById(R.id.btnOk);
         // if button is clicked, close the custom dialog
         dialogButton.setOnClickListener(new View.OnClickListener() {
             @Override

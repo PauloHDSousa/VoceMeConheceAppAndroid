@@ -111,6 +111,7 @@ public class CadastrarPerguntaActivity extends  BaseActivity {
                         respostaRepositorio.Inserir(r3);
 
                         Toast.makeText(CadastrarPerguntaActivity.this, "Pergunta cadastrada com sucesso", Toast.LENGTH_SHORT).show();
+                        conexao.close();
                         finish();
                     }else{
                         Toast.makeText(CadastrarPerguntaActivity.this, "Erro ao inserir pergunta", Toast.LENGTH_SHORT).show();

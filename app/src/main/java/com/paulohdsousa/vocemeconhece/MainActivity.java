@@ -9,6 +9,9 @@ import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.widget.ImageButton;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 import com.paulohdsousa.vocemeconhece.database.DatabaseHelper;
 import com.paulohdsousa.vocemeconhece.dominio.repositorio.PerguntaRepositorio;
 
@@ -34,6 +37,14 @@ public class    MainActivity extends BaseActivity {
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
+        MobileAds.initialize(this);
+
+        AdView mAdView = findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+
 
         btnJogar= (ImageButton)findViewById(R.id.btnJogar);
         databaseHelper = new DatabaseHelper(MainActivity.this);

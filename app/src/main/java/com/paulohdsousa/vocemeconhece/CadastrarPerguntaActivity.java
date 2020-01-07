@@ -11,6 +11,9 @@ import android.widget.ListView;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 import com.paulohdsousa.vocemeconhece.database.DatabaseHelper;
 import com.paulohdsousa.vocemeconhece.dominio.entidades.Pergunta;
 import com.paulohdsousa.vocemeconhece.dominio.entidades.Resposta;
@@ -46,6 +49,12 @@ public class CadastrarPerguntaActivity extends  BaseActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        MobileAds.initialize(this);
+
+        AdView mAdView = findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
 
         btnSalvar = (ImageButton) findViewById(R.id.btnSalvar);
         edtPergunta = (EditText) findViewById(R.id.edtPergunta);

@@ -18,6 +18,17 @@ tools:context=".CadastrarPerguntaActivity">
         android:id="@+id/llHeader"
         android:orientation="vertical">
 
+        <com.google.android.gms.ads.AdView
+            xmlns:ads="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/adView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            ads:adSize="BANNER"
+            ads:adUnitId="ca-app-pub-9110065538380851/4261079335">
+        </com.google.android.gms.ads.AdView>
+
         <TextView
             android:id="@+id/textView"
             android:layout_width="wrap_content"

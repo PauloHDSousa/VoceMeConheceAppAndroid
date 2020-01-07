@@ -18,6 +18,9 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 import com.paulohdsousa.vocemeconhece.database.DatabaseHelper;
 import com.paulohdsousa.vocemeconhece.dominio.entidades.Pergunta;
 import com.paulohdsousa.vocemeconhece.dominio.entidades.Ranking;
@@ -53,6 +56,12 @@ public class JogarActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_jogar);
 
+
+        MobileAds.initialize(this);
+
+        AdView mAdView = findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         final EditText input = new EditText(this);
